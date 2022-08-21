@@ -33,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
 export const Login = () => {
   const classes = useStyles();
   const history = useHistory();
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (_) => {
     setError('');
