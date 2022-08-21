@@ -1,4 +1,4 @@
-# FastAPI + React · ![build](https://github.com/Buuntu/fastapi-react/workflows/build/badge.svg) [![license](https://img.shields.io/github/license/peaceiris/actions-gh-pages.svg)](LICENSE) [![Dependabot Status](https://img.shields.io/badge/Dependabot-active-brightgreen.svg)](https://dependabot.com)
+# FastAPI + React · ![build](https://github.com/William-Hill/mj-hack-stack/workflows/build/badge.svg) [![license](https://img.shields.io/github/license/peaceiris/actions-gh-pages.svg)](LICENSE) [![Dependabot Status](https://img.shields.io/badge/Dependabot-active-brightgreen.svg)](https://dependabot.com)
 
 <div>
 <img src="assets/fastapi-logo.png" alt="fastapi-logo" height="60" /> <img
@@ -105,7 +105,7 @@ docs](https://docs.docker.com/compose/install/).
 Then, in the directory you want your project to live:
 
 ```bash
-cookiecutter gh:Buuntu/fastapi-react
+cookiecutter gh:William-Hill/mj-hack-stack
 ```
 
 You will need to put in a few variables and it will create a project directory
