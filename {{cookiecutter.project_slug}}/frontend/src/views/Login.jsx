@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Paper,
   Grid,
@@ -30,14 +30,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Login: FC = () => {
+export const Login = () => {
   const classes = useStyles();
   const history = useHistory();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
 
-  const handleSubmit = async (_: React.MouseEvent) => {
+  const handleSubmit = async (_) => {
     setError('');
     try {
       const data = await login(email, password);
@@ -71,7 +71,7 @@ export const Login: FC = () => {
               label="Email"
               type="email"
               value={email}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e) =>
                 setEmail(e.currentTarget.value)
               }
               fullWidth
@@ -90,7 +90,7 @@ export const Login: FC = () => {
               label="Password"
               type="password"
               value={password}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e) =>
                 setPassword(e.currentTarget.value)
               }
               fullWidth

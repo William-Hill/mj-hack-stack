@@ -1,12 +1,7 @@
 import decodeJwt from 'jwt-decode';
 
-type loginFormType = {
-  username: string;
-  password: string;
-};
-
 const authProvider = {
-  login: ({ username, password }: loginFormType) => {
+  login: ({ username, password }) => {
     let formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
@@ -22,7 +17,7 @@ const authProvider = {
         return response.json();
       })
       .then(({ access_token }) => {
-        const decodedToken: any = decodeJwt(access_token);
+        const decodedToken = decodeJwt(access_token);
         if (decodedToken.permissions !== 'admin') {
           throw new Error('Forbidden');
         }
@@ -35,7 +30,7 @@ const authProvider = {
     localStorage.removeItem('permissions');
     return Promise.resolve();
   },
-  checkError: (error: { status: number }) => {
+  checkError: (error) => {
     const status = error.status;
     if (status === 401 || status === 403) {
       localStorage.removeItem('token');

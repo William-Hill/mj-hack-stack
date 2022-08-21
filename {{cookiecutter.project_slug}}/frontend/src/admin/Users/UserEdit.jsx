@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   Edit,
   SimpleForm,
@@ -7,7 +7,7 @@ import {
   BooleanInput,
 } from 'react-admin';
 
-export const UserEdit: FC = (props) => (
+export const UserEdit = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput disabled source="id" />

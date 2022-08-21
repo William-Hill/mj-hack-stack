@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { Paper, Grid, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Face, Fingerprint } from '@material-ui/icons';
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SignUp: FC = () => {
+export const SignUp = () => {
   const classes = useStyles();
   const history = useHistory();
   const [email, setEmail] = useState<string>('');
@@ -31,7 +31,7 @@ export const SignUp: FC = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
   const [error, setError] = useState<string>('');
 
-  const handleSubmit = async (_: React.MouseEvent) => {
+  const handleSubmit = async (_) => {
     // Password confirmation validation
     if (password !== passwordConfirmation) setError('Passwords do not match');
     else {
@@ -69,7 +69,7 @@ export const SignUp: FC = () => {
               label="Email"
               type="email"
               value={email}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e) =>
                 setEmail(e.currentTarget.value)
               }
               fullWidth
@@ -88,7 +88,7 @@ export const SignUp: FC = () => {
               label="Password"
               type="password"
               value={password}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e) =>
                 setPassword(e.currentTarget.value)
               }
               fullWidth
@@ -106,7 +106,7 @@ export const SignUp: FC = () => {
               label="Confirm password"
               type="password"
               value={passwordConfirmation}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e) =>
                 setPasswordConfirmation(e.currentTarget.value)
               }
               fullWidth

@@ -16,7 +16,7 @@ export const isAuthenticated = () => {
  * @returns JSON data containing access token on success
  * @throws Error on http errors or failed attempts
  */
-export const login = async (email: string, password: string) => {
+export const login = async (email, password) => {
   // Assert email or password is not empty
   if (!(email.length > 0) || !(password.length > 0)) {
     throw new Error('Email or password was not provided');
@@ -47,7 +47,7 @@ export const login = async (email: string, password: string) => {
   }
 
   if ('access_token' in data) {
-    const decodedToken: any = decodeJwt(data['access_token']);
+    const decodedToken = decodeJwt(data['access_token']);
     localStorage.setItem('token', data['access_token']);
     localStorage.setItem('permissions', decodedToken.permissions);
   }
@@ -64,9 +64,9 @@ export const login = async (email: string, password: string) => {
  * @throws Error on http errors or failed attempts
  */
 export const signUp = async (
-  email: string,
-  password: string,
-  passwordConfirmation: string
+  email,
+  password,
+  passwordConfirmation
 ) => {
   // Assert email or password or password confirmation is not empty
   if (!(email.length > 0)) {
@@ -104,7 +104,7 @@ export const signUp = async (
   }
 
   if ('access_token' in data) {
-    const decodedToken: any = decodeJwt(data['access_token']);
+    const decodedToken = decodeJwt(data['access_token']);
     localStorage.setItem('token', data['access_token']);
     localStorage.setItem('permissions', decodedToken.permissions);
   }

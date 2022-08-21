@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { getMessage } from '../utils/api';
@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Home: FC = () => {
-  const [message, setMessage] = useState<string>('');
-  const [error, setError] = useState<string>('');
+export const Home = () => {
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
   const classes = useStyles();
 
   const queryBackend = async () => {

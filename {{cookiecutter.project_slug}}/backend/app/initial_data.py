@@ -12,8 +12,8 @@ def init() -> None:
     create_user(
         db,
         UserCreate(
-            email="{{cookiecutter.superuser_email}}",
-            password="{{cookiecutter.superuser_password}}",
+            email="admin@mj_hackstack.com",
+            password="password",
             is_active=True,
             is_superuser=True,
         ),
@@ -21,6 +21,6 @@ def init() -> None:
 
 
 if __name__ == "__main__":
-    print("Creating superuser {{cookiecutter.superuser_email}}")
+    print("Creating superuser admin@mj_hackstack.com")
     init()
     print("Superuser created")
