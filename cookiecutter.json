@@ -7,5 +7,6 @@
   "postgres_database": "app",
   "superuser_email": "admin@{{cookiecutter.project_name}}.com",
   "superuser_password": "password",
-  "secret_key": "super_secret"
+  "secret_key": "super_secret",
+  "NEW_RELIC_LICENSE_KEY": ""
 }

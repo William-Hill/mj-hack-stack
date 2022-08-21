@@ -44,7 +44,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
-    command: python app/main.py
+    command: NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program python app/main.py
     tty: true
     volumes:
       - ./backend:/app/:cached
