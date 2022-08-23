@@ -34,11 +34,11 @@ services:
 
   flower:  
     image: mher/flower
-    command: celery flower --broker=redis://redis:6379/0 --port=5555
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - FLOWER_PORT=8888
     ports:  
-        - 5555:5555
-    depends_on:
-      - "redis"
+      - 8888:8888
 
   backend:
     build:
