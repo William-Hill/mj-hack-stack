@@ -71,7 +71,7 @@ This should redirect you to http://localhost:3000
 
 ### Frontend Tests
 
-```
+```bash
 cd frontend
 npm install
 npm test
@@ -81,14 +81,14 @@ npm test
 
 Migrations are run using alembic. To run all migrations:
 
-```
+```bash
 docker-compose run --rm backend alembic upgrade head
 ```
 
 To create a new migration:
 
-```
-alembic revision -m "create users table"
+```bash
+docker-compose run alembic --autogenerate revision -m "{some descriptive message about db change}"
 ```
 
 And fill in `upgrade` and `downgrade` methods. For more information see
@@ -98,13 +98,13 @@ And fill in `upgrade` and `downgrade` methods. For more information see
 
 There is a helper script for both frontend and backend tests:
 
-```
+```bash
 ./scripts/test.sh
 ```
 
 ### Backend Tests
 
-```
+```bash
 docker-compose run backend pytest
 ```
 
@@ -112,7 +112,7 @@ any arguments to pytest can also be passed after this command
 
 ### Frontend Tests
 
-```
+```bash
 docker-compose run frontend test
 ```
 
@@ -120,13 +120,13 @@ This is the same as running npm test from within the frontend directory
 
 ## Logging
 
-```
+```bash
 docker-compose logs
 ```
 
 Or for a specific service:
 
-```
+```bash
 docker-compose logs -f name_of_service # frontend|backend|db
 ```
 
