@@ -9,6 +9,7 @@ from app.db.session import SessionLocal
 from app.core.auth import get_current_active_user
 from app.core.celery_app import celery_app
 from app import tasks
+from app.tasks import example_task_user
 
 
 app = FastAPI(
@@ -32,6 +33,13 @@ async def root():
 @app.get("/api/v1/task")
 async def example_task():
     celery_app.send_task("app.tasks.example_task", args=["Hello World"])
+
+    return {"message": "success"}
+
+
+@app.get("/api/v1/user_task")
+async def user_task():
+    example_task_user.delay()
 
     return {"message": "success"}
 
