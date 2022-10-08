@@ -34,6 +34,7 @@ services:
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - DATABASE_URL=postgresql://{{cookiecutter.postgres_user}}:{{cookiecutter.postgres_password}}@postgres:5432/{{cookiecutter.postgres_user}}
 
   flower:  
     image: mher/flower
