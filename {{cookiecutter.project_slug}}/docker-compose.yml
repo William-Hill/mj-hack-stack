@@ -74,5 +74,35 @@ services:
       - NODE_ENV=development
 
 
+  kafka:
+    image: confluentinc/cp-kafka:6.0.0
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+    depends_on:
+      - zookeeper
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:6.0.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  conduktor:
+    image: conduktor/conduktor:2.16.0
+    environment:
+      CONDUKTOR_KAFKA_CLUSTERS: '[{"name":"Local","bootstrapServers":"kafka:9092"}]'
+    ports:
+      - 9000:9000
+    depends_on:
+      - kafka
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
 volumes:
   db-data:
