@@ -16,7 +16,7 @@ modern stack.
 
 ## Features
 
-- **[FastAPI](https://fastapi.tiangolo.com/)** (Python 3.8)
+- **[FastAPI](https://fastapi.tiangolo.com/)** (Python 3.12)
   - JWT authentication using [OAuth2 "password
     flow"](https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/) and
     PyJWT
