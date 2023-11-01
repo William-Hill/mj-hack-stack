@@ -1,7 +1,6 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { useHistory } from 'react-router';
-import { makeStyles } from '@material-ui/core/styles';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
 
 import { Home, Login, SignUp, Protected, PrivateRoute } from './views';
 import { Admin } from './admin';
@@ -23,32 +22,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Routes = () => {
+export const RoutesList = () => {
   const classes = useStyles();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
-    <Switch>
-      <Route path="/admin">
-        <Admin />
-      </Route>
+    <div className={classes.app}>
+      <header className={classes.header}>
+        <Routes>
+          <Route path="/admin" element={<Admin />} />
 
-      <div className={classes.app}>
-        <header className={classes.header}>
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={SignUp} />
-          <Route
+          {/* <div className={classes.app}> */}
+          {/* <header className={classes.header}> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          {/* <Route
             path="/logout"
             render={() => {
               logout();
-              history.push('/');
+              navigate('/');
               return null;
             }}
-          />
-          <PrivateRoute path="/protected" component={Protected} />
-          <Route exact path="/" component={Home} />
-        </header>
-      </div>
-    </Switch>
+          /> */}
+          {/* <PrivateRoute path="/protected" element={<Protected />} /> */}
+          <Route exact path="/" element={<Home />} />
+          {/* </header> */}
+          {/* </div> */}
+        </Routes>
+      </header>
+    </div>
   );
 };

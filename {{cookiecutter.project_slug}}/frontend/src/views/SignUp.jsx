@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
-import { Paper, Grid, TextField, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Face, Fingerprint } from '@material-ui/icons';
-import { Alert } from '@material-ui/lab';
-import { Redirect } from 'react-router-dom';
-import { useHistory } from 'react-router';
-
+import { Paper, Grid, TextField, Button } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Face, Fingerprint } from '@mui/icons-material';
+import Alert from '@mui/material/Alert';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { signUp, isAuthenticated } from '../utils/auth';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
-    margin: theme.spacing(2),
+    margin: 2,
   },
   padding: {
-    padding: theme.spacing(1),
+    padding: 1,
   },
   button: {
     textTransform: 'none',
@@ -25,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const SignUp = () => {
   const classes = useStyles();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
@@ -40,7 +38,7 @@ export const SignUp = () => {
         const data = await signUp(email, password, passwordConfirmation);
 
         if (data) {
-          history.push('/');
+          navigate('/');
         }
       } catch (err) {
         if (err instanceof Error) {
@@ -55,7 +53,7 @@ export const SignUp = () => {
   };
 
   return isAuthenticated() ? (
-    <Redirect to="/" />
+    <Navigate to="/" />
   ) : (
     <Paper className={classes.padding}>
       <div className={classes.margin}>
@@ -69,9 +67,7 @@ export const SignUp = () => {
               label="Email"
               type="email"
               value={email}
-              onChange={(e) =>
-                setEmail(e.currentTarget.value)
-              }
+              onChange={(e) => setEmail(e.currentTarget.value)}
               fullWidth
               autoFocus
               required
@@ -88,9 +84,7 @@ export const SignUp = () => {
               label="Password"
               type="password"
               value={password}
-              onChange={(e) =>
-                setPassword(e.currentTarget.value)
-              }
+              onChange={(e) => setPassword(e.currentTarget.value)}
               fullWidth
               required
             />
@@ -106,9 +100,7 @@ export const SignUp = () => {
               label="Confirm password"
               type="password"
               value={passwordConfirmation}
-              onChange={(e) =>
-                setPasswordConfirmation(e.currentTarget.value)
-              }
+              onChange={(e) => setPasswordConfirmation(e.currentTarget.value)}
               fullWidth
               required
             />

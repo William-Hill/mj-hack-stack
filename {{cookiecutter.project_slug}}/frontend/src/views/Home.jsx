@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 import { getMessage } from '../utils/api';
 import { isAuthenticated } from '../utils/auth';

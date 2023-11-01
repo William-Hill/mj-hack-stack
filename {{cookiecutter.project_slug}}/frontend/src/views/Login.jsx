@@ -6,33 +6,33 @@ import {
   Button,
   FormControlLabel,
   Checkbox,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Face, Fingerprint } from '@material-ui/icons';
-import { Alert } from '@material-ui/lab';
-import { Redirect } from 'react-router-dom';
-import { useHistory } from 'react-router';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Face, Fingerprint } from '@mui/icons-material';
+import Alert from '@mui/material/Alert';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { spacing } from '@mui/system';
 
 import { login, isAuthenticated } from '../utils/auth';
 
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(2),
-  },
-  padding: {
-    padding: theme.spacing(1),
-  },
-  button: {
-    textTransform: 'none',
-  },
-  marginTop: {
-    marginTop: 10,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   margin: {
+//     margin: theme.spacing(2),
+//   },
+//   padding: {
+//     padding: theme.spacing(1),
+//   },
+//   button: {
+//     textTransform: 'none',
+//   },
+//   marginTop: {
+//     marginTop: 10,
+//   },
+// }));
 
 export const Login = () => {
-  const classes = useStyles();
-  const history = useHistory();
+  // const classes = useStyles();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -43,7 +43,7 @@ export const Login = () => {
       const data = await login(email, password);
 
       if (data) {
-        history.push('/');
+        navigate('/');
       }
     } catch (err) {
       if (err instanceof Error) {
@@ -57,10 +57,10 @@ export const Login = () => {
   };
 
   return isAuthenticated() ? (
-    <Redirect to="/" />
+    <Navigate to="/" />
   ) : (
-    <Paper className={classes.padding}>
-      <div className={classes.margin}>
+    <Paper>
+      <div>
         <Grid container spacing={8} alignItems="flex-end">
           <Grid item>
             <Face />
@@ -71,9 +71,7 @@ export const Login = () => {
               label="Email"
               type="email"
               value={email}
-              onChange={(e) =>
-                setEmail(e.currentTarget.value)
-              }
+              onChange={(e) => setEmail(e.currentTarget.value)}
               fullWidth
               autoFocus
               required
@@ -90,9 +88,7 @@ export const Login = () => {
               label="Password"
               type="password"
               value={password}
-              onChange={(e) =>
-                setPassword(e.currentTarget.value)
-              }
+              onChange={(e) => setPassword(e.currentTarget.value)}
               fullWidth
               required
             />
@@ -117,7 +113,6 @@ export const Login = () => {
             <Button
               disableFocusRipple
               disableRipple
-              className={classes.button}
               variant="text"
               color="primary"
             >
@@ -125,23 +120,17 @@ export const Login = () => {
             </Button>
           </Grid>
         </Grid>
-        <Grid container justify="center" className={classes.marginTop}>
+        <Grid container justify="center" sx={{ mt: 10 }}>
           {' '}
           <Button
             variant="outlined"
             color="primary"
-            className={classes.button}
             onClick={() => history.push('/signup')}
           >
             Sign Up
           </Button>{' '}
           &nbsp;
-          <Button
-            variant="outlined"
-            color="primary"
-            className={classes.button}
-            onClick={handleSubmit}
-          >
+          <Button variant="outlined" color="primary" onClick={handleSubmit}>
             Login
           </Button>
         </Grid>
