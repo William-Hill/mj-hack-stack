@@ -15,20 +15,20 @@ import { spacing } from '@mui/system';
 
 import { login, isAuthenticated } from '../utils/auth';
 
-// const useStyles = makeStyles((theme) => ({
-//   margin: {
-//     margin: theme.spacing(2),
-//   },
-//   padding: {
-//     padding: theme.spacing(1),
-//   },
-//   button: {
-//     textTransform: 'none',
-//   },
-//   marginTop: {
-//     marginTop: 10,
-//   },
-// }));
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: 2,
+  },
+  padding: {
+    padding: 1,
+  },
+  button: {
+    textTransform: 'none',
+  },
+  marginTop: {
+    marginTop: 10,
+  },
+}));
 
 export const Login = () => {
   // const classes = useStyles();
@@ -120,7 +120,7 @@ export const Login = () => {
             </Button>
           </Grid>
         </Grid>
-        <Grid container justify="center" sx={{ mt: 10 }}>
+        <Grid container justify="center" className={classes.marginTop}>
           {' '}
           <Button
             variant="outlined"
